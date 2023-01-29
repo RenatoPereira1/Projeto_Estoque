@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SAIDA DE PRODUTOS</title>
+    <meta charset="utf-8">
+
+    <script src="./scripts/jquery-3.6.0.js"></script>
+    <script src="./scripts/comunicaApiSaida.js"></script>
+    <link href="./style/style.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+
+    <div class="row affix-row">
+
+        <div id="nav-placeholder">
+
+        </div>
+
+        <script>
+            $.get("./navbar.html", function (data) {
+                $("#nav-placeholder").replaceWith(data);
+            });
+        </script>
+
+        <div class="col-sm-8 col-md-10 affix-content">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <h3>
+                            <center>SAIDA DE PRODUTO</center>
+                        </h3>
+
+                        <form name="formulario" autocomplete="off">
+
+                            <input type="hidden" class="form-control" id="idInput">
+
+                            <div class="form-group">
+                                <label for="codigoInput">Codigo</label>
+                                <input type="number" class="form-control" id="codigoInput" placeholder="Digite o codigo">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="qtdInput">Quantidade</label>
+                                <input type="number" class="form-control" id="qtdInput" placeholder="Digite a Quantidade">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dataInput">Data</label>
+                                <input type="text" class="form-control" id="dataInput" placeholder="Digite a data">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="unitarioInput">Valor Unitario</label>
+                                <input type="number" class="form-control" id="unitarioInput" placeholder="Digite o valor unitario">
+                            </div>
+
+
+
+                            <button type="button" class="btn btn-primary" onclick="cadastrar()">Enviar</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

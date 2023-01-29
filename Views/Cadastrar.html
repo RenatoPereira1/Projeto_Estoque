@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>CADASTRAR PRODUTOS</title>
+  <meta charset="utf-8">
+
+  <script src="./scripts/jquery-3.6.0.js"></script>
+  <script src="./scripts/comunicaApiCadProd.js"></script>
+  <link href="estilo.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+    integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+
+  <div class="row affix-row">
+
+    <div id="nav-placeholder">
+
+    </div>
+
+    <script>
+      $.get("./navbar.html", function (data) {
+        $("#nav-placeholder").replaceWith(data);
+      });
+    </script>
+
+    <div class="col-sm-8 col-md-10 affix-content">
+
+      <div class="container">
+
+        <div class="row justify-content-center">
+          <div class="col-md-12">
+            <h3>
+              <center>CADASTRAR PRODUTO</center>
+            </h3>
+
+            <form name="formulario" autocomplete="off">
+
+              <div class="form-group">
+                <label for="codigoInput">Codigo</label>
+                <input type="number" class="form-control" id="codigoInput" placeholder="Digite o codigo">
+              </div>
+
+              <div class="form-group">
+                <label for="nomeInput">Descrição</label>
+                <input type="text" class="form-control" id="nomeInput" placeholder="Digite a descrição">
+              </div>
+
+              <div class="form-group">
+                <label for="classeInput">Classe</label>
+                <input type="text" class="form-control" id="classeInput" placeholder="Digite a Classe">
+              </div>
+
+
+
+
+              <button type="button" class="btn btn-primary" onclick="cadastrar()">Enviar</button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+</body>
+
+</html>
