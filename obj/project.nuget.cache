@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5fS27u527Q1TrTP3N1JncHcvAZZuG9kJ2MRAS1m/j4xf0EoZXT/XPCvJhUEKDxxKgfEShGuYuNzLCX9rNWZJEw==",
+  "dgSpecHash": "aYvPzmG0T+oezExY0ETx0A+pgYvFf/T82vlm7ai6Q+Z1Adak0JAOOFbLwkvWkUMF/FBLGS2SLWxcesGNGv4JMg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\reap\\Dropbox\\Projeto Estoque Unimed\\Atualizado\\Projeto\\Projeto.csproj",
+  "projectFilePath": "C:\\Users\\reap\\Dropbox\\Projeto Estoque Unimed\\Atualização\\Projeto\\Projeto.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\reap\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\reap\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.0\\microsoft.entityframeworkcore.6.0.0.nupkg.sha512",

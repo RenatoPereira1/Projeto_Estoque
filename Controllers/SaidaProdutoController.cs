@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Projeto.Models;
+using Microsoft.EntityFrameworkCore;
  
 namespace Projeto.Controllers
 {
@@ -15,7 +16,7 @@ namespace Projeto.Controllers
         }
  
         [HttpGet]
-        public List<SaidaProduto> Listar()
+        public List<SaidaProduto> ListaSimples()
         {
             return contexto.SaidaProdutos.ToList();
         }
@@ -28,10 +29,28 @@ namespace Projeto.Controllers
             return"Saida registrada com sucesso!";
         }
 
-        
-        
-
-       
+        [HttpGet]
+        public List<SaidaProduto> Listar()
+        {
+            return contexto.SaidaProdutos.Include(v => v.CodigoProdutoNavigation).OrderBy(v => v.CodigoProduto).Select
+                (
+                    v => new SaidaProduto
+                    { 
+                        Id = v.Id,
+                        CodigoProduto = v.CodigoProduto,
+                        Qtde = v.Qtde,
+                        DataSaida = v.DataSaida,
+                        ValorUnitario = v.ValorUnitario,
+                        CodigoProdutoNavigation = new Produto 
+                        { 
+                            Codigo = v.CodigoProdutoNavigation.Codigo, 
+                            Descricao = v.CodigoProdutoNavigation.Descricao,
+                            Classe = v.CodigoProdutoNavigation.Classe,
+                        }, 
+                        
+                    }
+                ).ToList();
+        }
 
     }
 }

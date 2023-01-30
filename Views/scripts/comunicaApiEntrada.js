@@ -1,4 +1,7 @@
 
+$(document).ready(function() {
+    gridEntradas();
+});
 
 function cadastrar() {
     
@@ -33,4 +36,39 @@ function cadastrar() {
 
     
 };
+
+
+
+
+function gridEntradas() {
+    $.get('https://localhost:5001/EntradaProduto/Listar')
+        .done(function(resposta) { 
+            for(i = 0; i < resposta.length; i++) {                
+                let linha = $('<tr class="text-center"></tr>');
+                
+                linha.append($('<td></td>').html(resposta[i].codigoProdutoNavigation.codigo));
+                linha.append($('<td></td>').html(resposta[i].codigoProdutoNavigation.descricao));
+                linha.append($('<td></td>').html(resposta[i].solicitante));
+                linha.append($('<td></td>').html(resposta[i].qtde));
+                linha.append($('<td></td>').html(resposta[i].valorUnitario));
+                linha.append($('<td></td>').html(resposta[i].valorUnitario*resposta[i].qtde));
+                linha.append($('<td></td>').html(resposta[i].dataEntrada));
+                linha.append($('<td></td>').html(resposta[i].lote));
+                linha.append($('<td></td>').html(resposta[i].vencimento));
+                linha.append($('<td></td>').html(resposta[i].notafiscal));
+                
+                
+                 
+                $('#gridEntrada').append(linha);
+   
+            }
+
+            
+                       
+        })
+        .fail(function(erro, mensagem, excecao) { 
+            alert("Erro ao consultar a API!");
+        });
+}
+
 

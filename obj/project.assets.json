@@ -944,11 +944,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\reap\\Dropbox\\Projeto Estoque Unimed\\Atualizado\\Projeto\\Projeto.csproj",
+      "projectUniqueName": "C:\\Users\\reap\\Dropbox\\Projeto Estoque Unimed\\Atualização\\Projeto\\Projeto.csproj",
       "projectName": "Projeto",
-      "projectPath": "C:\\Users\\reap\\Dropbox\\Projeto Estoque Unimed\\Atualizado\\Projeto\\Projeto.csproj",
+      "projectPath": "C:\\Users\\reap\\Dropbox\\Projeto Estoque Unimed\\Atualização\\Projeto\\Projeto.csproj",
       "packagesPath": "C:\\Users\\reap\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\reap\\Dropbox\\Projeto Estoque Unimed\\Atualizado\\Projeto\\obj\\",
+      "outputPath": "C:\\Users\\reap\\Dropbox\\Projeto Estoque Unimed\\Atualização\\Projeto\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\reap\\AppData\\Roaming\\NuGet\\NuGet.Config"
