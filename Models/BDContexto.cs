@@ -20,6 +20,7 @@ namespace Projeto.Models
         public virtual DbSet<Estoque> Estoques { get; set; } = null!;
         public virtual DbSet<Produto> Produtos { get; set; } = null!;
         public virtual DbSet<SaidaProduto> SaidaProdutos { get; set; } = null!;
+        public virtual DbSet<Usuario> Usuarios { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -148,6 +149,37 @@ namespace Projeto.Models
                     .HasForeignKey(d => d.CodigoProduto)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_produto_saida");
+            });
+
+            modelBuilder.Entity<Usuario>(entity =>
+            {
+                entity.ToTable("usuario");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Ativo).HasColumnName("ativo");
+
+                entity.Property(e => e.Cpf).HasColumnName("cpf");
+
+                entity.Property(e => e.Email)
+                    .HasMaxLength(100)
+                    .HasColumnName("email");
+
+                entity.Property(e => e.Grupo)
+                    .HasMaxLength(50)
+                    .HasColumnName("grupo");
+
+                entity.Property(e => e.Login)
+                    .HasMaxLength(50)
+                    .HasColumnName("login");
+
+                entity.Property(e => e.Nome)
+                    .HasMaxLength(100)
+                    .HasColumnName("nome");
+
+                entity.Property(e => e.Senha)
+                    .HasMaxLength(10)
+                    .HasColumnName("senha");
             });
 
             OnModelCreatingPartial(modelBuilder);

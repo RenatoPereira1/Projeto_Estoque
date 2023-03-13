@@ -3,3 +3,16 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+#botao_cadastrar {
+  width: 360px;
+  size: 10000px;
+} 
+
+th {
+  text-align : center;
+}
+
+tr {
+  text-align: center;
+}

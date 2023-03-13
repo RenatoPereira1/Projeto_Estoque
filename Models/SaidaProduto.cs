@@ -11,6 +11,6 @@ namespace Projeto.Models
         public string DataSaida { get; set; } = null!;
         public decimal? ValorUnitario { get; set; }
 
-        public virtual Produto? CodigoProdutoNavigation { get; set; }
+        public virtual Produto CodigoProdutoNavigation { get; set; } = null!;
     }
 }

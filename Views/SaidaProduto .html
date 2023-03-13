@@ -24,9 +24,17 @@
         </div>
 
         <script>
-            $.get("./navbar.html", function (data) {
-                $("#nav-placeholder").replaceWith(data);
-            });
+            if (window.location.href.split("?")[1] == "administrador") {
+
+                $.get("./navbar.html", function (data) {
+                    $("#nav-placeholder").replaceWith(data);
+                });
+
+            } else {
+                $.get("./navbar_usuario.html", function (data) {
+                    $("#nav-placeholder").replaceWith(data);
+                });
+            }
         </script>
 
         <div class="col-sm-8 col-md-10 affix-content">
@@ -43,12 +51,14 @@
 
                             <div class="form-group">
                                 <label for="codigoInput">Codigo</label>
-                                <input type="number" class="form-control" id="codigoInput" placeholder="Digite o codigo">
+                                <input type="number" class="form-control" id="codigoInput"
+                                    placeholder="Digite o codigo">
                             </div>
 
                             <div class="form-group">
                                 <label for="qtdInput">Quantidade</label>
-                                <input type="number" class="form-control" id="qtdInput" placeholder="Digite a Quantidade">
+                                <input type="number" class="form-control" id="qtdInput"
+                                    placeholder="Digite a Quantidade">
                             </div>
 
                             <div class="form-group">
@@ -58,7 +68,8 @@
 
                             <div class="form-group">
                                 <label for="unitarioInput">Valor Unitario</label>
-                                <input type="number" class="form-control" id="unitarioInput" placeholder="Digite o valor unitario">
+                                <input type="number" class="form-control" id="unitarioInput"
+                                    placeholder="Digite o valor unitario">
                             </div>
 
 

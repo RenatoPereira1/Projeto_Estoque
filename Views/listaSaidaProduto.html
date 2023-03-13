@@ -24,9 +24,17 @@
     </div>
 
     <script>
-      $.get("./navbar.html", function (data) {
-        $("#nav-placeholder").replaceWith(data);
-      });
+      if (window.location.href.split("?")[1] == "administrador") {
+
+        $.get("./navbar.html", function (data) {
+          $("#nav-placeholder").replaceWith(data);
+        });
+
+      } else {
+        $.get("./navbar_usuario.html", function (data) {
+          $("#nav-placeholder").replaceWith(data);
+        });
+      }
     </script>
 
 
