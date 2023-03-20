@@ -18,6 +18,7 @@ namespace Projeto.Models
 
         public virtual DbSet<EntradaProduto> EntradaProdutos { get; set; } = null!;
         public virtual DbSet<Estoque> Estoques { get; set; } = null!;
+        public virtual DbSet<Fornecedor> Fornecedors { get; set; } = null!;
         public virtual DbSet<Produto> Produtos { get; set; } = null!;
         public virtual DbSet<SaidaProduto> SaidaProdutos { get; set; } = null!;
         public virtual DbSet<Usuario> Usuarios { get; set; } = null!;
@@ -40,6 +41,8 @@ namespace Projeto.Models
             {
                 entity.ToTable("entrada_produto");
 
+                entity.HasIndex(e => e.IdFornecedor, "fk_id_fornecedor");
+
                 entity.HasIndex(e => e.CodigoProduto, "fk_produto_entrada");
 
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -49,6 +52,10 @@ namespace Projeto.Models
                 entity.Property(e => e.DataEntrada)
                     .HasMaxLength(10)
                     .HasColumnName("data_entrada");
+
+                entity.Property(e => e.IdFornecedor)
+                    .HasColumnName("id_fornecedor")
+                    .HasDefaultValueSql("'2'");
 
                 entity.Property(e => e.Lote)
                     .HasMaxLength(100)
@@ -77,6 +84,12 @@ namespace Projeto.Models
                     .WithMany(p => p.EntradaProdutos)
                     .HasForeignKey(d => d.CodigoProduto)
                     .HasConstraintName("fk_produto_entrada");
+
+                entity.HasOne(d => d.IdFornecedorNavigation)
+                    .WithMany(p => p.EntradaProdutos)
+                    .HasForeignKey(d => d.IdFornecedor)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_id_fornecedor");
             });
 
             modelBuilder.Entity<Estoque>(entity =>
@@ -101,6 +114,47 @@ namespace Projeto.Models
                     .HasForeignKey(d => d.CodigoProduto)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_produto_estoque");
+            });
+
+            modelBuilder.Entity<Fornecedor>(entity =>
+            {
+                entity.ToTable("fornecedor");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Bairro)
+                    .HasMaxLength(100)
+                    .HasColumnName("bairro");
+
+                entity.Property(e => e.Cep).HasColumnName("cep");
+
+                entity.Property(e => e.Cidade)
+                    .HasMaxLength(100)
+                    .HasColumnName("cidade");
+
+                entity.Property(e => e.Cnpj).HasColumnName("cnpj");
+
+                entity.Property(e => e.Email)
+                    .HasMaxLength(200)
+                    .HasColumnName("email");
+
+                entity.Property(e => e.Ibge)
+                    .HasMaxLength(60)
+                    .HasColumnName("ibge");
+
+                entity.Property(e => e.Nome)
+                    .HasMaxLength(50)
+                    .HasColumnName("nome");
+
+                entity.Property(e => e.Rua)
+                    .HasMaxLength(200)
+                    .HasColumnName("rua");
+
+                entity.Property(e => e.Telefone).HasColumnName("telefone");
+
+                entity.Property(e => e.Uf)
+                    .HasMaxLength(2)
+                    .HasColumnName("uf");
             });
 
             modelBuilder.Entity<Produto>(entity =>

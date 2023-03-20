@@ -2,84 +2,281 @@
 <html>
 
 <head>
-  <title>CADASTRAR PRODUTOS</title>
-  <meta charset="utf-8">
+    <title>CADASTRAR FORNECEDOR</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-  <script src="./scripts/jquery-3.6.0.js"></script>
-  <script src="./scripts/comunicaapi.js"></script>
-  <link href="estilo.css" rel="stylesheet">
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-    integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="./scripts/jquery-3.6.0.js"></script>
+    <script src="./scripts/comunicaApiFornecedor.js"></script>
+    <link rel="stylesheet" href="./style/style.css">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+        crossorigin="anonymous"></script>
 
 
 </head>
 
 <body>
 
-  <div class="row affix-row">
 
-    <div id="nav-placeholder">
+    <div class="row affix-row">
 
-    </div>
+        <div id="nav-placeholder">
 
-    <script>
-      if (window.location.href.split("?")[1] == "administrador") {
-
-        $.get("./navbar.html", function (data) {
-          $("#nav-placeholder").replaceWith(data);
-        });
-
-      } else {
-        $.get("./navbar_usuario.html", function (data) {
-          $("#nav-placeholder").replaceWith(data);
-        });
-      }
-    </script>
-
-
-    <div class="col-sm-8 col-md-10 affix-content">
-
-      <div class="container">
-
-        <div class="row justify-content-center">
-          <div class="col-md-12">
-            <h3>
-              <center>CADASTRAR PRODUTO</center>
-            </h3>
-
-            <form name="formulario" autocomplete="off">
-
-              <div class="form-group">
-                <label for="codigoInput">Codigo</label>
-                <input type="number" class="form-control" id="codigoInput" placeholder="Digite o codigo">
-              </div>
-
-              <div class="form-group">
-                <label for="nomeInput">Descrição</label>
-                <input type="text" class="form-control" id="nomeInput" placeholder="Digite a descrição">
-              </div>
-
-              <div class="form-group">
-                <label for="classeInput">Classe</label>
-                <input type="text" class="form-control" id="classeInput" placeholder="Digite a Classe">
-              </div>
-
-
-
-
-              <button type="button" class="btn btn-primary" onclick="cadastrar()">Enviar</button>
-
-            </form>
-          </div>
         </div>
-      </div>
+
+        <script>
+            if (window.location.href.split("?")[1] == "administrador") {
+
+                $.get("./navbar.html", function (data) {
+                    $("#nav-placeholder").replaceWith(data);
+                });
+
+            } else {
+                $.get("./navbar_usuario.html", function (data) {
+                    $("#nav-placeholder").replaceWith(data);
+                });
+            }
+        </script>
+
+
+        <div class="col-sm-8 col-md-10 affix-content">
+
+            <div class="container">
+
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h1>CADASTRO DE FORNECEDOR</h1>
+                        
+                    </div>
+                    <div class="pull-right">
+                        <button type="button" class="btn  btn-success btn.lg" id="botao_cadastrar" data-toggle="modal"
+                            data-target="#myModalcad">Cadastrar Fornecedor</button>
+                    </div>
+                    <br><br>
+                    <input id="input-busca" type="text" class="form-control mt-3 mb-3" placeholder="O que você procura?">
+                    <br>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr class="text-center">
+                                <th style="text-align: center;">ID</th>
+                                <th style="text-align: center;">NOME</th>
+                                <th style="text-align: center;">CNPJ</th>
+                                <th style="text-align: center;">EMAIL</th>
+                                <th style="text-align: center;">TELEFONE</th>
+                                <th style="text-align: center;">CEP</th>
+                                <th style="text-align: center;">RUA</th>
+                                <th style="text-align: center;">BAIRRO</th>
+                                <th style="text-align: center;">CIDADE</th>
+                                <th style="text-align: center;">UF</th>
+                                <th style="text-align: center;">IBGE</th>
+                            </tr>
+                        </thead>
+                        <tbody id="grid">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="container theme-showcase" role="main">
+
+            <!-- Inicio Modal -->
+            <div class="modal fade" id="myModalcad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title text-center" id="myModalLabel">Cadastrar Fornecedor</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form name="formulario" autocomplete="off">
+
+                                <input type="hidden" class="form-control" id="idInput">
+
+                                <div class="form-group">
+                                    <label for="nomeInput">Nome:</label>
+                                    <input type="text" class="form-control" id="nomeInput"
+                                        placeholder="Digite o nome do Fornecedor">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cnpjInput">CNPJ:</label>
+                                    <input type="text" class="form-control" id="cnpjInput"
+                                        placeholder="Digite o CNPJ">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="emailInput">Email:</label>
+                                    <input type="text" class="form-control" id="emailInput"
+                                        placeholder="Digite o email">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="telefoneInput">Telefone:</label>
+                                    <input type="text" class="form-control" id="telefoneInput"
+                                        placeholder="Digite o telefone">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cepInput">CEP:</label>
+                                    <input type="text" class="form-control" id="cepInput" 
+                                        placeholder="Digite o CEP">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ruaInput">Rua:</label>
+                                    <input type="text" class="form-control" id="ruaInput"
+                                        placeholder="Digite a rua">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="bairroInput">Bairro:</label>
+                                    <input type="text" class="form-control" id="bairroInput"
+                                        placeholder="Digite o bairro">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cidadeInput">Cidade:</label>
+                                    <input type="text" class="form-control" id="cidadeInput"
+                                        placeholder="Digite a cidade">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ufInput">UF:</label>
+                                    <input type="text" class="form-control" id="ufInput"
+                                        placeholder="Digite o UF">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ibgeInput">IBGE:</label>
+                                    <input type="text" class="form-control" id="ibgeInput"
+                                        placeholder="Digite o codigo IBGE">
+                                </div>
+
+
+
+                                <button type="button" class="btn btn-primary" onclick="cadastrar()">Cadastrar</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fim Modal -->
+
+            <div class="modal fade" id="myModaled" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title text-center" id="myModalLabel2">Editar Usuario</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form name="formulario2" autocomplete="off">
+
+                                <input type="hidden" class="form-control" id="idInput2">
+
+                                <div class="form-group">
+                                    <label for="loginInput2">Login:</label>
+                                    <input type="text" class="form-control" id="loginInput2"
+                                        placeholder="Digite o login">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="nomeInput2">Nome:</label>
+                                    <input type="text" class="form-control" id="nomeInput2"
+                                        placeholder="Digite o nome completo">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="senhaInput2">Senha:</label>
+                                    <input type="password" class="form-control" id="senhaInput2"
+                                        placeholder="Digite a senha">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="grupoInput2">Grupo:</label>
+                                    <select id="grupoInput2" class="form-control">
+                                        <option value="">Selecione o Grupo....</option>
+                                        <option value="administrador">administrador</option>
+                                        <option value="usuario">usuario</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cpfInput2">CPF:</label>
+                                    <input type="text" class="form-control" id="cpfInput2" placeholder="Digite o cpf">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="emailInput2">Email:</label>
+                                    <input type="email" class="form-control" id="emailInput2"
+                                        placeholder="Digite o seu email">
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label for="ativoInput2">Ativo?:</label>
+                                    <select id="ativoInput2" class="form-control">
+                                        <option value="1">ativado</option>
+                                        <option value="0">desativado</option>
+                                    </select>
+                                </div>
+
+
+
+                                <button type="button" class="btn btn-primary" onclick="editar()">Editar</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fim Modal -->
+
+
+        </div>
+
+
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $('#exampleModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget) // Button that triggered the modal
+                var recipient = button.data('whatever') // Extract info from data-* attributes
+                var recipientnome = button.data('whatevernome')
+                var recipientdetalhes = button.data('whateverdetalhes')
+                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                var modal = $(this)
+                modal.find('.modal-title').text('ID do Curso: ' + recipient)
+                modal.find('#id_curso').val(recipient)
+                modal.find('#recipient-name').val(recipientnome)
+                modal.find('#detalhes-text').val(recipientdetalhes)
+            })
+        </script>
+
+
+
+
 
 
     </div>
-  </div>
 
-
+    <script src="/Views/js/eventos.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
-    gridEntradas();
+    grid();
 });
 
 function cadastrar() {
@@ -14,7 +14,8 @@ function cadastrar() {
         DataEntrada: formulario.dataInput.value,
         Lote: formulario.loteInput.value,
         Vencimento: formulario.venciInput.value,
-        Notafiscal: formulario.nfInput.value
+        Notafiscal: formulario.nfInput.value,
+        IdFornecedor: formulario.fornecedorInput.value
         
     };
 
@@ -29,7 +30,7 @@ function cadastrar() {
            
         },
         error: function() {
-            alert("Erro ao realizar o cadastro!");
+            alert("Errooii ao realizar o cadastro!");
            
         }
     });
@@ -40,7 +41,7 @@ function cadastrar() {
 
 
 
-function gridEntradas() {
+function grid() {
     $.get('https://localhost:5001/EntradaProduto/Listar')
         .done(function(resposta) { 
             for(i = 0; i < resposta.length; i++) {                
@@ -56,10 +57,11 @@ function gridEntradas() {
                 linha.append($('<td></td>').html(resposta[i].lote));
                 linha.append($('<td></td>').html(resposta[i].vencimento));
                 linha.append($('<td></td>').html(resposta[i].notafiscal));
+                linha.append($('<td></td>').html(resposta[i].idFornecedorNavigation.nome));
                 
                 
                  
-                $('#gridEntrada').append(linha);
+                $('#grid').append(linha);
    
             }
 

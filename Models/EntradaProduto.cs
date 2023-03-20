@@ -14,7 +14,9 @@ namespace Projeto.Models
         public string? Lote { get; set; }
         public string? Vencimento { get; set; }
         public string? Notafiscal { get; set; }
+        public int IdFornecedor { get; set; }
 
         public virtual Produto? CodigoProdutoNavigation { get; set; }
+        public virtual Fornecedor? IdFornecedorNavigation { get; set; } = null!;
     }
 }

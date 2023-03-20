@@ -32,7 +32,7 @@ namespace Projeto.Controllers
         [HttpGet]
         public List<EntradaProduto> Listar()
         {
-            return contexto.EntradaProdutos.Include(v => v.CodigoProdutoNavigation).OrderBy(v => v.CodigoProduto).Select
+            return contexto.EntradaProdutos.Include(v => v.CodigoProdutoNavigation).Include(v=> v.IdFornecedorNavigation).OrderBy(v => v.DataEntrada).Select
                 (
                     v => new EntradaProduto
                     { 
@@ -50,7 +50,19 @@ namespace Projeto.Controllers
                             Codigo = v.CodigoProdutoNavigation.Codigo, 
                             Descricao = v.CodigoProdutoNavigation.Descricao,
                             Classe = v.CodigoProdutoNavigation.Classe,
-                        }, 
+                        },
+                        IdFornecedorNavigation = new Fornecedor{
+                            Id= v.IdFornecedorNavigation.Id,
+                            Nome= v.IdFornecedorNavigation.Nome,
+                            Email= v.IdFornecedorNavigation.Email,
+                            Telefone= v.IdFornecedorNavigation.Telefone,
+                            Cep= v.IdFornecedorNavigation.Cep,
+                            Rua= v.IdFornecedorNavigation.Rua,
+                            Bairro= v.IdFornecedorNavigation.Bairro,
+                            Cidade= v.IdFornecedorNavigation.Cidade,
+                            Uf= v.IdFornecedorNavigation.Uf,
+                            Ibge= v.IdFornecedorNavigation.Ibge,
+                        } 
                         
                     }
                 ).ToList();

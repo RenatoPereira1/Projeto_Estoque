@@ -78,7 +78,7 @@ function cadastrar() {
            
         },
         error: function() {
-            alert("Errooooooo ao realizar o cadastro!");
+            alert("Erro ao realizar o cadastro!");
            
         }
     });

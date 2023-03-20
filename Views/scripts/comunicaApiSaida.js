@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    gridSaidas();
+    grid();
 });
 
 
@@ -33,7 +33,7 @@ function cadastrar() {
     
 };
 
-function gridSaidas() {
+function grid() {
     $.get('https://localhost:5001/SaidaProduto/Listar')
         .done(function(resposta) { 
             for(i = 0; i < resposta.length; i++) {                
@@ -48,7 +48,7 @@ function gridSaidas() {
  
                 
                  
-                $('#gridSaida').append(linha);
+                $('#grid').append(linha);
    
             }
 

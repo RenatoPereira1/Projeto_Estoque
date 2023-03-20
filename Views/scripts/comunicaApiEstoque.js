@@ -1,9 +1,9 @@
 $(document).ready(function() {
-    gridEstoque();
+    grid();
 });
 
 
-function gridEstoque() {
+function grid() {
     $.get('https://localhost:5001/ListaEstoque/Listar')
         .done(function(resposta) { 
             for(i = 0; i < resposta.length; i++) {                
@@ -13,10 +13,11 @@ function gridEstoque() {
                 linha.append($('<td></td>').html(resposta[i].codigoProdutoNavigation.descricao));
                 linha.append($('<td></td>').html(resposta[i].qtde));
                 linha.append($('<td></td>').html(resposta[i].valorUnitario));
-                linha.append($('<td></td>').html(resposta[i].valorUnitario*resposta[i].qtde));
+                var arredondar = resposta[i].valorUnitario*resposta[i].qtde
+                linha.append($('<td></td>').html(arredondar.toFixed(2)));
                 
                  
-                $('#gridEstoque').append(linha);
+                $('#grid').append(linha);
    
             }
 

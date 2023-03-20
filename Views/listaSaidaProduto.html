@@ -7,7 +7,7 @@
 
   <script src="./scripts/jquery-3.6.0.js"></script>
   <script src="./scripts/comunicaApiSaida.js"></script>
-  <link href="estilo.css" rel="stylesheet">
+  
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
     integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -42,10 +42,11 @@
 
       <div class="container">
 
-        <div class="col-md-6">
+        <div class="col-md-12">
           <h3>
             <center>SAIDA DE PRODUTOS</center>
           </h3>
+          <input id="input-busca" type="text" class="form-control mt-3 mb-3" placeholder="O que você procura?">
           <table class="table table-striped">
             <thead>
               <tr class="text-center">
@@ -57,7 +58,7 @@
                 <th>VALOR TOTAL</th>
               </tr>
             </thead>
-            <tbody id="gridSaida">
+            <tbody id="grid">
 
             </tbody>
           </table>
@@ -68,7 +69,11 @@
     </div>
   </div>
 
-
+  <script src="/Views/js/eventos.js"></script>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>

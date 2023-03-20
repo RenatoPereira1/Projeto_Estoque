@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Administrador</title>
+    <title>ADMINISTRADOR</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,6 +18,7 @@
 </head>
 
 <body>
+
 
     <div class="row affix-row">
 
@@ -39,15 +40,46 @@
             }
         </script>
 
+
+        <div class="col-sm-8 col-md-10 affix-content">
+
+            <div class="container">
+
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h1>ÁREA DO ADMINISTRADOR</h1>
+                        <h2>Usuarios do Sistema</h2>
+                    </div>
+                    <div class="pull-right">
+                        <button type="button" class="btn  btn-success btn.lg" id="botao_cadastrar" data-toggle="modal"
+                            data-target="#myModalcad">Cadastrar Novo Usuario</button>
+                    </div>
+                    <br><br>
+                    <input id="input-busca" type="text" class="form-control mt-3 mb-3" placeholder="O que você procura?">
+                    <br>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr class="text-center">
+                                <th style="text-align: center;">LOGIN</th>
+                                <th style="text-align: center;">NOME</th>
+                                <th style="text-align: center;">SENHA</th>
+                                <th style="text-align: center;">GRUPO</th>
+                                <th style="text-align: center;">CPF</th>
+                                <th style="text-align: center;">EMAIL</th>
+                                <th style="text-align: center;">ATIVO</th>
+                                <th style="text-align: center;">EDITAR</th>
+                            </tr>
+                        </thead>
+                        <tbody id="grid">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
         <div class="container theme-showcase" role="main">
-            <div class="page-header">
-                <h1>ÁREA DO ADMINISTRADOR</h1>
-                <h2>Usuarios do Sistema</h2>
-            </div>
-            <div class="pull-right">
-                <button type="button" class="btn  btn-success btn.lg" id="botao_cadastrar" data-toggle="modal"
-                    data-target="#myModalcad">Cadastrar Novo Usuario</button>
-            </div>
+
             <!-- Inicio Modal -->
             <div class="modal fade" id="myModalcad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
@@ -194,24 +226,6 @@
             <!-- Fim Modal -->
 
 
-            <table class="table table-striped">
-                <thead>
-                    <tr class="text-center">
-                        <th style="text-align: center;">LOGIN</th>
-                        <th style="text-align: center;">NOME</th>
-                        <th style="text-align: center;">SENHA</th>
-                        <th style="text-align: center;">GRUPO</th>
-                        <th style="text-align: center;">CPF</th>
-                        <th style="text-align: center;">EMAIL</th>
-                        <th style="text-align: center;">ATIVO</th>
-                        <th style="text-align: center;">EDITAR</th>
-                    </tr>
-                </thead>
-                <tbody id="grid">
-
-                </tbody>
-            </table>
-
         </div>
 
 
@@ -243,7 +257,7 @@
 
     </div>
 
-
+    <script src="/Views/js/eventos.js"></script>
 </body>
 
 </html>
